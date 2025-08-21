@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My Google Drive Photo Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #222;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      padding: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;   /* yahi quality maintain karega */
+      border-radius: 14px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    }
+    footer {
+      background: #222;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+  <header>📸 My Google Drive Gallery</header>
+
+  <div class="gallery" id="gallery"></div>
+
+  <footer>© 2025 My Gallery | Powered by Google Drive</footer>
+
+  <script>
+    const folderId = "11pVRPFLpG-_BatqO_UyTVR4kpzuM9_wg";
+    const apiKey = "AIzaSyAVgcn1BTOjb8TZCP60OcXQ5VanFsLyTuk";
+
+    async function loadGallery() {
+      let nextPage = '';
+      const gallery = document.getElementById("gallery");
+
+      do {
+        const res = await fetch(
+          `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&pageToken=${nextPage}&fields=files(id,name,mimeType),nextPageToken`
+        );
+        const data = await res.json();
+
+        data.files.forEach(file => {
+          if (file.mimeType.startsWith("image/")) {
+            const imgUrl = `https://drive.google.com/uc?export=download&id=${file.id}`;
+            const img = document.createElement("img");
+            img.src = imgUrl;
+            img.alt = file.name;
+            gallery.appendChild(img);
+          }
+        });
+
+        nextPage = data.nextPageToken || '';
+      } while (nextPage);
+    }
+
+    loadGallery();
+  </script>
+</body>
+</html>
