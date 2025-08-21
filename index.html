@@ -55,29 +55,27 @@
       color: white;
     }
 
-    /* ===== MAIN CARDS ===== */
+    /* ===== MAIN CARDS (SLIDER) ===== */
     main {
       flex-grow: 1;
       padding-top: 90px;   /* header ke neeche jagah */
       padding-bottom: 85px;/* footer ke liye jagah */
-      overflow-y: auto;
-      padding-left: 10px;
-      padding-right: 10px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
-      gap: 12px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      overflow-x: auto;    /* horizontal scroll allow */
+      overflow-y: hidden;
+      white-space: nowrap; /* ek line mein sab cards */
+      padding-left: 15px;
+      padding-right: 15px;
+      scroll-behavior: smooth;
     }
 
     .card {
-      display: flex;
+      display: inline-flex;   /* ek line me dikhe */
       justify-content: center;
       align-items: center;
-      height: 80px;
+      width: 140px;
+      height: 100px;
       background: white;
-      padding: 10px;
+      margin-right: 12px;
       border-radius: 12px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.12);
       text-align: center;
@@ -112,15 +110,10 @@
 
     /* ===== Mobile Adjustments ===== */
     @media (max-width: 600px) {
-      main {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-        padding-top: 95px; 
-      }
       .card {
-        height: 70px;
+        width: 110px;
+        height: 80px;
         font-size: 1em;
-        padding: 8px;
       }
     }
   </style>
