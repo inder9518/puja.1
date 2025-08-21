@@ -16,20 +16,20 @@
       flex-direction: column;
     }
 
-    /* ===== HEADER (पहले जैसा) ===== */
+    /* ===== HEADER ===== */
     header {
       background-color: #007acc;
       color: white;
       padding: 12px 18px;
-      border-radius: 0 0 15px 15px;
-      border-bottom: 2px solid #005f99;
+      border-radius: 15px;   /* 🔹 charo corner curve */
+      border: 2px solid #005f99;
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 10px;   /* thoda neeche laya taki curve dikh sake */
+      left: 10px;
+      right: 10px;
       z-index: 1000;
     }
 
@@ -58,8 +58,8 @@
     /* ===== MAIN CARDS ===== */
     main {
       flex-grow: 1;
-      padding-top: 70px;   /* header ke neeche safe jagah */
-      padding-bottom: 65px;/* footer ke liye jagah */
+      padding-top: 90px;   /* header ke neeche jagah */
+      padding-bottom: 85px;/* footer ke liye jagah */
       overflow-y: auto;
       padding-left: 10px;
       padding-right: 10px;
@@ -100,13 +100,13 @@
       color: white;
       text-align: center;
       padding: 8px 10px;
-      border-radius: 15px 15px 0 0;
-      border-top: 2px solid #005f99;
+      border-radius: 15px;  /* 🔹 charo corner curve */
+      border: 2px solid #005f99;
       font-size: 0.85em;
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 10px;  /* thoda upar laya taki curve dikh sake */
+      left: 10px;
+      right: 10px;
       z-index: 1000;
     }
 
@@ -115,7 +115,7 @@
       main {
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
-        padding-top: 85px; /* thoda extra space mobile me */
+        padding-top: 95px; 
       }
       .card {
         height: 70px;
