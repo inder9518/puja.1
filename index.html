@@ -21,13 +21,17 @@
       background-color: #007acc;
       color: white;
       padding: 15px 20px;
-      margin: 15px;
-      border-radius: 15px;
-      border: 2px solid #005f99;
+      border-radius: 0 0 15px 15px;
+      border-bottom: 2px solid #005f99;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
     }
 
     .header-title {
@@ -55,13 +59,17 @@
 
     /* ===== MAIN CARDS ===== */
     main {
+      flex-grow: 1;
+      margin-top: 80px;   /* header ke liye jagah */
+      margin-bottom: 60px;/* footer ke liye jagah */
+      overflow-y: auto;   /* sirf yeh scroll hoga */
       padding: 40px 20px;
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
       gap: 25px;
       max-width: 1200px;
-      margin: 0 auto;
-      flex-grow: 1;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .card {
@@ -93,10 +101,14 @@
       color: white;
       text-align: center;
       padding: 12px 15px;
-      margin: 15px;
-      border-radius: 12px;
-      border: 2px solid #005f99;
+      border-radius: 15px 15px 0 0;
+      border-top: 2px solid #005f99;
       font-size: clamp(0.8em, 1.2vw, 1em);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
     }
 
     /* ===== Mobile Friendly ===== */
@@ -121,14 +133,19 @@
   </header>
 
   <main>
+    <!-- Example cards, aur bhi add kar sakte ho -->
     <a href="2022.html" class="card">2022</a>
     <a href="2023.html" class="card">2023</a>
     <a href="2024.html" class="card">2024</a>
     <a href="2025.html" class="card">2025</a>
+    <a href="#" class="card">2026</a>
+    <a href="#" class="card">2027</a>
+    <a href="#" class="card">2028</a>
+    <a href="#" class="card">2029</a>
   </main>
 
   <footer>
-    &copy; 2025 CHHAT PUJA. All rights reserved.
+    &copy; 2025 PCDO. All rights reserved.
   </footer>
 
 </body>
