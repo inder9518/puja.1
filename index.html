@@ -20,7 +20,7 @@
     header {
       background-color: #007acc;
       color: white;
-      padding: 15px 20px;
+      padding: 12px 18px;
       border-radius: 0 0 15px 15px;
       border-bottom: 2px solid #005f99;
       display: flex;
@@ -42,7 +42,7 @@
     .home-button {
       background-color: white;
       color: #007acc;
-      padding: 8px 18px;
+      padding: 7px 16px;
       border-radius: 8px;
       border: 2px solid #007acc;
       font-weight: bold;
@@ -60,14 +60,14 @@
     /* ===== MAIN CARDS ===== */
     main {
       flex-grow: 1;
-      margin-top: 70px;   /* header ke liye space */
+      margin-top: 65px;   /* header ke liye space */
       margin-bottom: 55px;/* footer ke liye space */
       overflow-y: auto;   /* sirf yeh scroll hoga */
-      padding: 25px 15px;
+      padding: 20px 15px;
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-      gap: 20px;
-      max-width: 1000px;
+      grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+      gap: 15px;
+      max-width: 900px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -76,13 +76,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 110px;   /* pehle 160px tha */
+      height: 90px;        /* phone par lambe na dikhe */
       background: white;
-      padding: 20px;       /* pehle 40px tha */
-      border-radius: 14px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
       text-align: center;
-      font-size: clamp(1.2em, 4vw, 2em);
+      font-size: clamp(1em, 4vw, 1.6em);
       font-weight: 800;
       color: #007acc;
       cursor: pointer;
@@ -91,8 +91,8 @@
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
     }
 
     /* ===== FOOTER ===== */
@@ -100,7 +100,7 @@
       background-color: #007acc;
       color: white;
       text-align: center;
-      padding: 10px 12px;
+      padding: 8px 10px;
       border-radius: 15px 15px 0 0;
       border-top: 2px solid #005f99;
       font-size: clamp(0.75em, 1vw, 0.9em);
@@ -111,16 +111,24 @@
       z-index: 1000;
     }
 
-    /* ===== Mobile Friendly ===== */
+    /* ===== Mobile Specific Adjustments ===== */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
         text-align: center;
       }
       .home-button {
         width: 100%;
         text-align: center;
+      }
+      main {
+        grid-template-columns: 1fr 1fr; /* mobile me 2 column me cards aayenge */
+      }
+      .card {
+        height: 80px;     /* aur chhoti height phone me */
+        font-size: 1.2em;
+        padding: 10px;
       }
     }
   </style>
