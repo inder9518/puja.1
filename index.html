@@ -35,21 +35,21 @@
     }
 
     .header-title {
-      font-size: clamp(1.5em, 2.5vw, 2.2em);
+      font-size: clamp(1.3em, 2.2vw, 2em);
       font-weight: bold;
     }
 
     .home-button {
       background-color: white;
       color: #007acc;
-      padding: 10px 22px;
-      border-radius: 10px;
+      padding: 8px 18px;
+      border-radius: 8px;
       border: 2px solid #007acc;
       font-weight: bold;
       text-decoration: none;
       transition: background 0.3s, color 0.3s;
       white-space: nowrap;
-      font-size: clamp(0.9em, 1.2vw, 1.1em);
+      font-size: clamp(0.85em, 1.1vw, 1em);
     }
 
     .home-button:hover {
@@ -60,14 +60,14 @@
     /* ===== MAIN CARDS ===== */
     main {
       flex-grow: 1;
-      margin-top: 80px;   /* header ke liye space */
-      margin-bottom: 60px;/* footer ke liye space */
+      margin-top: 70px;   /* header ke liye space */
+      margin-bottom: 55px;/* footer ke liye space */
       overflow-y: auto;   /* sirf yeh scroll hoga */
-      padding: 40px 20px;
+      padding: 25px 15px;
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 25px;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 20px;
+      max-width: 1000px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -76,14 +76,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 160px;
+      min-height: 110px;   /* pehle 160px tha */
       background: white;
-      padding: 40px 20px;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      padding: 20px;       /* pehle 40px tha */
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
       text-align: center;
-      font-size: clamp(1.5em, 5vw, 3em);
-      font-weight: 900;
+      font-size: clamp(1.2em, 4vw, 2em);
+      font-weight: 800;
       color: #007acc;
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -91,8 +91,8 @@
     }
 
     .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.2);
     }
 
     /* ===== FOOTER ===== */
@@ -100,10 +100,10 @@
       background-color: #007acc;
       color: white;
       text-align: center;
-      padding: 12px 15px;
+      padding: 10px 12px;
       border-radius: 15px 15px 0 0;
       border-top: 2px solid #005f99;
-      font-size: clamp(0.8em, 1.2vw, 1em);
+      font-size: clamp(0.75em, 1vw, 0.9em);
       position: fixed;
       bottom: 0;
       left: 0;
@@ -115,7 +115,7 @@
     @media (max-width: 600px) {
       header {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
         text-align: center;
       }
       .home-button {
