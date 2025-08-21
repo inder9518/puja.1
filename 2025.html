@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>2023 PHOTOS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Header */
+    header {
+      background-color: #007acc;
+      color: white;
+      padding: 12px 20px;         /* header chhota kiya */
+      margin: 15px;
+      border-radius: 15px;        /* charo corner curve */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: Arial, sans-serif;
+    }
+    .header-title { font-size: 1.5em; font-weight: bold; }
+    .home-button {
+      background-color: white;
+      color: #007acc;
+      padding: 8px 18px;
+      border-radius: 10px;
+      border: 2px solid #007acc;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .home-button:hover { background-color: #005f99; color: white; }
+
+    /* Body & Gallery */
+    body { font-family: sans-serif; background: #111; color: #eee; margin: 0; padding: 0 15px 40px; }
+    h1 { margin: 20px 0; text-align: center; font-size: 1.8em; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+    .card { background: #222; border-radius: 10px; padding: 10px; text-align: center; }
+    .card img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: contain;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .buttons { margin-top: 8px; display: flex; justify-content: space-between; gap: 6px; }
+    .btn { flex: 1; padding: 7px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: bold; }
+    .show-btn { background: #007acc; color: white; }
+    .download-btn { background: #28a745; color: white; text-align: center; text-decoration: none; display: inline-block; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none; position: fixed; z-index: 9999;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      align-items: center; justify-content: center; flex-direction: column;
+      padding: 10px;
+    }
+    .lightbox img {
+      max-width: 95%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    .close, .prev, .next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      font-size: 28px; background: rgba(255,255,255,0.2);
+      color: white; border: none; padding: 10px; border-radius: 50%; cursor: pointer;
+    }
+    .close { top: 20px; right: 20px; transform: none; font-size: 36px; }
+    .prev { left: 15px; }
+    .next { right: 15px; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-title">CHHAT PUJA</div>
+    <a href="index.html" class="home-button">Home</a>
+  </header>
+
+  <!-- Gallery -->
+  <h1>ALL PHOTOS</h1>
+  <div class="grid" id="gallery"></div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="close" onclick="closeLightbox()">&times;</button>
+    <button class="prev" onclick="changePhoto(-1)">&#10094;</button>
+    <img id="lightbox-img" src="">
+    <button class="next" onclick="changePhoto(1)">&#10095;</button>
+  </div>
+
+  <script>
+    const gallery = document.getElementById("gallery");
+    let currentIndex = 0;
+    const totalPhotos = 50; // change as per your folder
+
+    // Generate photo cards
+    for (let i = 1; i <= totalPhotos; i++) {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      const img = document.createElement("img");
+      img.src = `${i}.jpg`;
+      img.alt = `Photo ${i}`;
+      img.onclick = () => openLightbox(i);
+
+      const buttons = document.createElement("div");
+      buttons.classList.add("buttons");
+
+      const showBtn = document.createElement("button");
+      showBtn.classList.add("btn","show-btn");
+      showBtn.textContent = "Show";
+      showBtn.onclick = () => openLightbox(i);
+
+      const downloadBtn = document.createElement("a");
+      downloadBtn.classList.add("btn","download-btn");
+      downloadBtn.textContent = "Download";
+      downloadBtn.href = `${i}.jpg`;
+      downloadBtn.download = `Photo-${i}`;
+
+      buttons.appendChild(showBtn);
+      buttons.appendChild(downloadBtn);
+
+      card.appendChild(img);
+      card.appendChild(buttons);
+
+      gallery.appendChild(card);
+    }
+
+    // Lightbox functions
+    function openLightbox(index) {
+      currentIndex = index;
+      document.getElementById("lightbox-img").src = `${index}.jpg`;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+    function changePhoto(step) {
+      currentIndex += step;
+      if (currentIndex < 1) currentIndex = totalPhotos;
+      if (currentIndex > totalPhotos) currentIndex = 1;
+      document.getElementById("lightbox-img").src = `${currentIndex}.jpg`;
+    }
+  </script>
+
+</body>
+</html>
