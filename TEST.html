@@ -1,90 +1,122 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>My Google Drive Photo Gallery</title>
+  <meta charset="UTF-8" />
+  <title>Drive Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      margin: 0;
-      padding: 0;
+      background:#f5f5f5;
+      color:#333;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
     }
+    /* ===== HEADER ===== */
     header {
-      background: #222;
-      padding: 15px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      background:#007acc;
+      color:#fff;
+      padding:12px 18px;
+      border-radius:15px;
+      border:2px solid #005f99;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      position:fixed;
+      top:10px; left:10px; right:10px;
+      z-index:1000;
     }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 12px;
-      padding: 20px;
+    .header-title { font-size:1.4em; font-weight:bold; }
+    .home-button {
+      background:#fff; color:#007acc;
+      padding:6px 14px;
+      border-radius:8px;
+      border:2px solid #007acc;
+      font-weight:bold;
+      text-decoration:none;
+      font-size:0.9em;
     }
-    .gallery img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;   /* yahi quality maintain karega */
-      border-radius: 14px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    .home-button:hover { background:#005f99; color:#fff; }
+    /* ===== MAIN GRID ===== */
+    main {
+      flex-grow:1;
+      padding:100px 10px 90px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap:15px;
+      max-width:1100px;
+      margin:auto;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    .photo {
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      border-radius:12px;
+      box-shadow:0 3px 12px rgba(0,0,0,0.15);
+      transition:transform 0.3s;
     }
+    .photo:hover { transform:scale(1.05); }
+    /* ===== FOOTER ===== */
     footer {
-      background: #222;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      color: #bbb;
+      background:#007acc;
+      color:#fff;
+      text-align:center;
+      padding:8px 10px;
+      border-radius:15px;
+      border:2px solid #005f99;
+      font-size:0.85em;
+      position:fixed;
+      bottom:10px; left:10px; right:10px;
     }
   </style>
 </head>
 <body>
-  <header>📸 My Google Drive Gallery</header>
 
-  <div class="gallery" id="gallery"></div>
+  <header>
+    <div class="header-title">📸 Drive Gallery</div>
+    <a href="index.html" class="home-button">Home</a>
+  </header>
 
-  <footer>© 2025 My Gallery | Powered by Google Drive</footer>
+  <main id="gallery">Loading photos...</main>
 
-  <script>
-    const folderId = "11pVRPFLpG-_BatqO_UyTVR4kpzuM9_wg";
-    const apiKey = "AIzaSyAVgcn1BTOjb8TZCP60OcXQ5VanFsLyTuk";
+  <footer>&copy; 2025 Drive Gallery</footer>
 
-    async function loadGallery() {
-      let nextPage = '';
-      const gallery = document.getElementById("gallery");
+<script>
+const folderId = "11pVRPFLpG-_BatqO_UyTVR4kpzuM9_wg";  // tumhara folder ID
+const apiKey   = "AIzaSyDpMQjKJS8xpZ097Bjik8OaCzMVd97kEvE";  // tumhari API key
 
-      do {
-        const res = await fetch(
-          `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&pageToken=${nextPage}&fields=files(id,name,mimeType),nextPageToken`
-        );
-        const data = await res.json();
+async function loadPhotos() {
+  const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    const gallery = document.getElementById("gallery");
+    gallery.innerHTML = "";
 
-        data.files.forEach(file => {
-          if (file.mimeType.startsWith("image/")) {
-            const imgUrl = `https://drive.google.com/uc?export=download&id=${file.id}`;
-            const img = document.createElement("img");
-            img.src = imgUrl;
-            img.alt = file.name;
-            gallery.appendChild(img);
-          }
-        });
-
-        nextPage = data.nextPageToken || '';
-      } while (nextPage);
+    if (!data.files || data.files.length === 0) {
+      gallery.innerHTML = "<p>No photos found.</p>";
+      return;
     }
 
-    loadGallery();
-  </script>
+    data.files.forEach(file => {
+      if (file.mimeType.startsWith("image/")) {
+        const img = document.createElement("img");
+        img.src = `https://drive.google.com/uc?export=view&id=${file.id}`;
+        img.className = "photo";
+        img.alt = file.name;
+        gallery.appendChild(img);
+      }
+    });
+  } catch (err) {
+    document.getElementById("gallery").innerHTML = "<p>Error loading photos.</p>";
+    console.error(err);
+  }
+}
+
+loadPhotos();
+</script>
+
 </body>
 </html>
