@@ -1,0 +1,37 @@
+[build]
+  publish = "public"   # Yahan apne website files ka folder name daalo (jaise public, dist, ya root "./")
+
+# 🔹 Minify HTML
+[[plugins]]
+  package = "netlify-plugin-minify-html"
+
+# 🔹 Inline critical CSS (above the fold fast load)
+[[plugins]]
+  package = "netlify-plugin-inline-critical-css"
+
+# 🔹 Image Optimization
+[[plugins]]
+  package = "netlify-plugin-image-optim"
+
+# 🔹 Brotli & Gzip Compression
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Encoding = "br, gzip"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# 🔹 Caching Rules (JS, CSS, Images ke liye)
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
