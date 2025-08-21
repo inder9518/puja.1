@@ -2,14 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PCDO</title>
+  <title>CHHAT PUJA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *{margin:0;padding:0;box-sizing:border-box}
 
     body {
       font-family: Arial, sans-serif;
@@ -20,12 +16,13 @@
       flex-direction: column;
     }
 
+    /* ===== HEADER ===== */
     header {
       background-color: #007acc;
       color: white;
-      padding: 20px;
-      margin: 20px;
-      border-radius: 20px;
+      padding: 15px 20px;
+      margin: 15px;
+      border-radius: 15px;
       border: 2px solid #005f99;
       display: flex;
       align-items: center;
@@ -34,21 +31,21 @@
     }
 
     .header-title {
-      font-size: 2em;
+      font-size: clamp(1.5em, 2.5vw, 2.2em);
       font-weight: bold;
     }
 
     .home-button {
       background-color: white;
       color: #007acc;
-      padding: 12px 28px;
-      border-radius: 12px;
+      padding: 10px 22px;
+      border-radius: 10px;
       border: 2px solid #007acc;
       font-weight: bold;
       text-decoration: none;
       transition: background 0.3s, color 0.3s;
       white-space: nowrap;
-      font-size: 1.1em;
+      font-size: clamp(0.9em, 1.2vw, 1.1em);
     }
 
     .home-button:hover {
@@ -56,11 +53,12 @@
       color: white;
     }
 
+    /* ===== MAIN CARDS ===== */
     main {
-      padding: 50px 30px;
+      padding: 40px 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
-      gap: 40px;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 25px;
       max-width: 1200px;
       margin: 0 auto;
       flex-grow: 1;
@@ -70,91 +68,47 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 220px;
+      min-height: 160px;
       background: white;
-      padding: 60px 40px;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      padding: 40px 20px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
       text-align: center;
-      font-size: 3em;
+      font-size: clamp(1.5em, 5vw, 3em);
       font-weight: 900;
       color: #007acc;
       cursor: pointer;
-      transition: transform 0.4s, box-shadow 0.4s;
-      user-select: none;
+      transition: transform 0.3s, box-shadow 0.3s;
       text-decoration: none;
     }
 
     .card:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
     }
 
+    /* ===== FOOTER ===== */
     footer {
       background-color: #007acc;
       color: white;
       text-align: center;
-      padding: 15px 20px;
-      margin: 20px;
-      border-radius: 15px;
+      padding: 12px 15px;
+      margin: 15px;
+      border-radius: 12px;
       border: 2px solid #005f99;
-      font-size: 1em;
+      font-size: clamp(0.8em, 1.2vw, 1em);
     }
 
-    /* Responsive text sizes & spacing */
-    @media (max-width: 768px) {
-      .header-title {
-        font-size: 1.8em;
+    /* ===== Mobile Friendly ===== */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
       }
-
       .home-button {
-        padding: 10px 24px;
-        font-size: 1em;
-      }
-
-      main {
-        padding: 40px 20px;
-        gap: 30px;
-      }
-
-      .card {
-        font-size: 2.5em;
-        padding: 50px 30px;
-        height: 180px;
-      }
-
-      footer {
-        font-size: 0.9em;
-        margin: 15px;
-        padding: 12px 15px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header-title {
-        font-size: 1.5em;
-      }
-
-      .home-button {
-        padding: 8px 20px;
-        font-size: 0.9em;
-      }
-
-      main {
-        padding: 30px 15px;
-        gap: 25px;
-      }
-
-      .card {
-        font-size: 2em;
-        padding: 40px 25px;
-        height: 150px;
-      }
-
-      footer {
-        font-size: 0.8em;
-        margin: 10px;
-        padding: 10px 12px;
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
@@ -174,7 +128,7 @@
   </main>
 
   <footer>
-    &copy; 2025 PCDO. All rights reserved.
+    &copy; 2025 CHHAT PUJA. All rights reserved.
   </footer>
 
 </body>
