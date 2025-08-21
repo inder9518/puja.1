@@ -16,17 +16,16 @@
       flex-direction: column;
     }
 
-    /* ===== HEADER ===== */
+    /* ===== HEADER (पहले जैसा) ===== */
     header {
       background-color: #007acc;
       color: white;
-      padding: 15px 18px;
+      padding: 12px 18px;
       border-radius: 0 0 15px 15px;
       border-bottom: 2px solid #005f99;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
       position: fixed;
       top: 0;
       left: 0;
@@ -35,21 +34,20 @@
     }
 
     .header-title {
-      font-size: clamp(1.3em, 2.2vw, 2em);
+      font-size: 1.4em;
       font-weight: bold;
     }
 
     .home-button {
       background-color: white;
       color: #007acc;
-      padding: 7px 16px;
+      padding: 6px 14px;
       border-radius: 8px;
       border: 2px solid #007acc;
       font-weight: bold;
       text-decoration: none;
       transition: background 0.3s, color 0.3s;
-      white-space: nowrap;
-      font-size: clamp(0.85em, 1.1vw, 1em);
+      font-size: 0.9em;
     }
 
     .home-button:hover {
@@ -60,7 +58,7 @@
     /* ===== MAIN CARDS ===== */
     main {
       flex-grow: 1;
-      padding-top: 90px;   /* ✅ header ke neeche safe jagah */
+      padding-top: 70px;   /* header ke neeche safe jagah */
       padding-bottom: 65px;/* footer ke liye jagah */
       overflow-y: auto;
       padding-left: 10px;
@@ -83,7 +81,7 @@
       border-radius: 12px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.12);
       text-align: center;
-      font-size: clamp(1em, 4vw, 1.4em);
+      font-size: 1.2em;
       font-weight: 800;
       color: #007acc;
       cursor: pointer;
@@ -104,7 +102,7 @@
       padding: 8px 10px;
       border-radius: 15px 15px 0 0;
       border-top: 2px solid #005f99;
-      font-size: clamp(0.75em, 1vw, 0.9em);
+      font-size: 0.85em;
       position: fixed;
       bottom: 0;
       left: 0;
@@ -112,26 +110,16 @@
       z-index: 1000;
     }
 
-    /* ===== Mobile Specific Adjustments ===== */
+    /* ===== Mobile Adjustments ===== */
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        gap: 6px;
-        text-align: center;
-        padding: 18px 12px; /* thoda zyada padding */
-      }
-      .home-button {
-        width: 100%;
-        text-align: center;
-      }
       main {
-        grid-template-columns: repeat(3, 1fr); /* mobile me 3 column */
+        grid-template-columns: repeat(3, 1fr);
         gap: 8px;
-        padding-top: 120px; /* ✅ mobile header thoda bada hota hai */
+        padding-top: 85px; /* thoda extra space mobile me */
       }
       .card {
         height: 70px;
-        font-size: 1.1em;
+        font-size: 1em;
         padding: 8px;
       }
     }
