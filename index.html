@@ -20,7 +20,7 @@
     header {
       background-color: #007acc;
       color: white;
-      padding: 12px 18px;
+      padding: 15px 18px;
       border-radius: 0 0 15px 15px;
       border-bottom: 2px solid #005f99;
       display: flex;
@@ -60,10 +60,11 @@
     /* ===== MAIN CARDS ===== */
     main {
       flex-grow: 1;
-      margin-top: 65px;   /* header ke liye space */
-      margin-bottom: 55px;/* footer ke liye space */
-      overflow-y: auto;   /* sirf yeh scroll hoga */
-      padding: 15px 10px;
+      padding-top: 90px;   /* ✅ header ke neeche safe jagah */
+      padding-bottom: 65px;/* footer ke liye jagah */
+      overflow-y: auto;
+      padding-left: 10px;
+      padding-right: 10px;
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
       gap: 12px;
@@ -117,6 +118,7 @@
         flex-direction: column;
         gap: 6px;
         text-align: center;
+        padding: 18px 12px; /* thoda zyada padding */
       }
       .home-button {
         width: 100%;
@@ -124,10 +126,11 @@
       }
       main {
         grid-template-columns: repeat(3, 1fr); /* mobile me 3 column */
-        gap: 8px; /* kam gap */
+        gap: 8px;
+        padding-top: 120px; /* ✅ mobile header thoda bada hota hai */
       }
       .card {
-        height: 70px;     /* aur chhoti height */
+        height: 70px;
         font-size: 1.1em;
         padding: 8px;
       }
