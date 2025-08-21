@@ -9,22 +9,20 @@
     header {
       background-color: #007acc;
       color: white;
-      padding: 20px;
-      margin: 20px;
-      border-radius: 20px;
-      border: 2px solid #005f99;
+      padding: 12px 20px;         /* header chhota kiya */
+      margin: 15px;
+      border-radius: 15px;        /* charo corner curve */
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
       font-family: Arial, sans-serif;
     }
-    .header-title { font-size: 2em; font-weight: bold; }
+    .header-title { font-size: 1.5em; font-weight: bold; }
     .home-button {
       background-color: white;
       color: #007acc;
-      padding: 12px 28px;
-      border-radius: 12px;
+      padding: 8px 18px;
+      border-radius: 10px;
       border: 2px solid #007acc;
       font-weight: bold;
       text-decoration: none;
@@ -39,9 +37,9 @@
     .card { background: #222; border-radius: 10px; padding: 10px; text-align: center; }
     .card img {
       width: 100%;
-      height: auto;              /* auto rakha hai taaki quality na ghate */
-      max-height: 200px;         /* bas ek max limit */
-      object-fit: contain;       /* stretch nahi hoga */
+      height: auto;
+      max-height: 200px;
+      object-fit: contain;
       border-radius: 6px;
       cursor: pointer;
     }
@@ -104,7 +102,7 @@
       card.classList.add("card");
 
       const img = document.createElement("img");
-      img.src = `${i}.jpg`;  // Thumbnails bhi ye hi use kar raha
+      img.src = `${i}.jpg`;
       img.alt = `Photo ${i}`;
       img.onclick = () => openLightbox(i);
 
@@ -134,7 +132,7 @@
     // Lightbox functions
     function openLightbox(index) {
       currentIndex = index;
-      document.getElementById("lightbox-img").src = `${index}.jpg`; // FULL resolution
+      document.getElementById("lightbox-img").src = `${index}.jpg`;
       document.getElementById("lightbox").style.display = "flex";
     }
     function closeLightbox() {
